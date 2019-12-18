@@ -13,7 +13,7 @@ sub build_with_curl {
     print `$cmd`;
 }
 
-if ($#ARGV > 1) {
+if ($#ARGV > 0) {
     my $flist = "";
     my $target = pop(@ARGV);
     for (my $i = 0; $i < scalar(@ARGV); $i++) {
