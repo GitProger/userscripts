@@ -4,6 +4,10 @@ alias md=mkdir
 alias cls=clear
 alias py=python3
 
-cpp_ol_comp() {
-    g++ -Wall -std=c++11 -O2 main.cpp -o o
+pyol() {
+    python3 main.py
+}
+
+function cpp_olimp_comp {
+    g++ -Wall -o o -std=c++11 main.cpp
 }
