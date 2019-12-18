@@ -11,3 +11,5 @@ pyol() {
 function cpp_olimp_comp {
     g++ -Wall -o o -std=c++11 main.cpp
 }
+
+alias runapch="sudo service apache2 start"
