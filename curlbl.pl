@@ -18,7 +18,7 @@ if ($#ARGV > 0) {
     my $target = pop(@ARGV);
     for (my $i = 0; $i < scalar(@ARGV); $i++) {
         $flist = $flist . " " . $ARGV[$i];
-	} 
+    } 
     build_with_curl($ARGV[0], $target);
     exit 0;
 } else {
