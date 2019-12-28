@@ -3,6 +3,7 @@ alias sysmon="gnome-system-monitor"
 alias md=mkdir
 alias cls=clear
 alias py=python3
+alias pl=perl
 
 pyol() {
     python3 main.py
