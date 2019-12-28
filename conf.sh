@@ -13,3 +13,4 @@ function cpp_olimp_comp {
 }
 
 alias runapch="sudo service apache2 start"
+cgidir="/usr/lib/cgi-bin"
