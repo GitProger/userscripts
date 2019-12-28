@@ -6,7 +6,7 @@ use warnings;
 my $filename = "dummy.html";
 my $file;
 
-if (!open(my $file, '<:encoding(UTF-8)', $filename)) {
+if (!open($file, '<:encoding(UTF-8)', $filename)) {
     die "Could not open file '$filename' $!";
 }
 
