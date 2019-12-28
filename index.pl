@@ -1,5 +1,18 @@
 #!/usr/bin/env perl
 
-print "Content-type: text/html\n\n";
+use strict;
+use warnings;
+ 
+my $filename = "dummy.html";
+my $file;
 
-print "Hello CGI\n";
+if (!open(my $file, '<:encoding(UTF-8)', $filename)) {
+    die "Could not open file '$filename' $!";
+}
+
+print("Content-type: text/html\n\n");
+
+while (my $row = <$file>) {
+    chomp $row;
+    print "$row\n";
+}
