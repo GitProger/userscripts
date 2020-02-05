@@ -16,8 +16,8 @@ sub build {
     my ($fname, $objname) = (shift, shift);    
     my $cmd = "$__COMPILER__ $fname $__FLAGS__ -o $objname ";
     foreach my $curlib (@_) {
-		$cmd .= $__LIBMAP__{$curlib} . " "
-	}
+        $cmd .= $__LIBMAP__{$curlib} . " "
+    }
     print "Running: $cmd\n";
     print "-" x (9 + length($cmd)), "\n";
     print `$cmd`;
