@@ -22,6 +22,6 @@ if ($#ARGV > 0) {
     build_with_curl($ARGV[0], $target);
     exit 0;
 } else {
-    print __USAGE__;
+    print $__USAGE__;
     exit -1;
 }
