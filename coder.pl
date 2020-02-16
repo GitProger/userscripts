@@ -37,6 +37,7 @@ sub main {
     my $obf = unpack("H*", $code);
     # eval pack('H*', $var);
     print $obf;
+    return 0;
 }
 
 exit(main(@ARGV));
