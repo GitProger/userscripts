@@ -7,6 +7,7 @@ use IO::Socket;
 sub servertell {
     my $host = shift;
     my $sock = shift or die "Invalid socket handler\n";
+    #for(;;)
     {
         my $cmd = <STDIN>;
         chomp($cmd);
@@ -20,23 +21,23 @@ sub servertell {
 
         if (uc($method) eq "POST") {
             my ($content, $input) = ("", "");
-			print "Content: ";
+            print "Content: ";
             do {
-				$input = <STDIN>;
-				$content .= $input;
-			} while ($input);
+                $input = <STDIN>;
+                $content .= $input;
+            } while ($input);
             $query .= "Content-Length: " . length($content) . "\r\n";
             $query .= "\r\n";
             $query .= $content;
-		}
+        }
 
-		$query .= "\r\n";
+        $query .= "\r\n";
         print $sock $query;
         print "-" x 5 . " Response " . "-" x 10, "\n"; 
         print <$sock>, "\n";
         print "-" x 25, "\n";
         print "Errors: $!\n" if ($!);
-	}
+    }
 }
 
 sub main {
