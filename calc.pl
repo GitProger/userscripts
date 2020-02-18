@@ -6,7 +6,7 @@ use warnings;
 sub calc {
     my $e = shift;
     return
-        ($e =~ m/^[-\d\*\/\+%(\*\*)\(\)\s(<<|>>|&|\||\^|~|)]*$/) ?
+        ($e =~ m/^[-\d\*\/\+%(\*\*)\(\)\s(<<|>>|&|\||\^|~|)(sqrt)]*$/) ?
             eval($e)
         :
             "Uncorrect expression.";
