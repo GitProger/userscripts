@@ -24,7 +24,7 @@ def cgiprint(*argv, sep=" ", end="\n", encoding="utf-8", file=sys.stdout, flush=
         file.buffer.flush()
 
 def assign():
-	'''
-	    Assign standart 'print' to 'cgiprint.cgiprint'
-	'''
+    '''
+        Assign standart 'print' to 'cgiprint.cgiprint'
+    '''
     print = cgiprint
