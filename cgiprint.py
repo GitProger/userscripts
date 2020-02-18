@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 '''
     Use '<meta charset="utf-8">' or 
     'Content-type: text/html; charset=utf-8' instead of 'Content-type: text/html'
 '''
+
 import sys
-def print(*argv, sep=" ", end="\n", encoding="utf-8", file=sys.stdout, flush=True):
+def cgiprint(*argv, sep=" ", end="\n", encoding="utf-8", file=sys.stdout, flush=True):
     '''
-    * Warning: Only python3
-    * This is 'print' function for cgi output, works like standart python3's 'print'
+        Warning: Only python3
+        This is 'print' function for cgi output, works like standart python3's 'print'
     '''
     __local_write = lambda obj: file.buffer.write(
         str(obj).encode(encoding)
@@ -19,3 +22,9 @@ def print(*argv, sep=" ", end="\n", encoding="utf-8", file=sys.stdout, flush=Tru
     __local_write(end)
     if flush:
         file.buffer.flush()
+
+def assign():
+	'''
+	    Assign standart 'print' to 'cgiprint.cgiprint'
+	'''
+    print = cgiprint
