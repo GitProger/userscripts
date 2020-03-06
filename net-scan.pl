@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-my $PACK_COUNT = 2;
+my $PACK_COUNT = 1; #2
 
 sub usage {
     print "Usage: net-scan [beginAddr] [endAddr]\n\tScan all addresses in [beginAddr..endAddr]\n";
@@ -32,12 +32,21 @@ sub check {
 }
 
 sub scan {
+    our $i = 0; # like static
+    sub boot {
+        my @all = ("/", "-", "\\", "|");
+        $i = ($i + 1) % 4;
+        return $all[$i];
+    }
     my ($beg, $end) = (ip_to_int(shift), ip_to_int(shift));
     for (my $addr = $beg; $addr <= $end; $addr++) {
         my $host = int_to_ip($addr);
-        if (check($host) == 0) {
-            print "Ok: $host\n";
+        my $ok = check($host);
+        print(("\b" x 8) . (" " x 8) . ("\b" x 8));
+        if ($ok == 0) {
+            print "Opened: $host\n";
         }
+        print "Scan...", boot();
     }
 }
 
@@ -54,6 +63,7 @@ sub main {
         $end = shift;
     }
     scan($beg, $end);
+    print(("\b" x 8) . (" " x 8) . "\n");
     return 0;
 }
 
