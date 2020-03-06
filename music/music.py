@@ -3,7 +3,6 @@ import sys, os, re;
 from getpass import getuser
 
 def main(argv: list):
-    argv.sort()
     __music__ = "/home/" + getuser() + "/Музыка/"
     __downloads__ = "/home/" + getuser() + "/Загрузки/"
     for f in os.listdir(__downloads__):
