@@ -38,15 +38,18 @@ sub scan {
         $i = ($i + 1) % 4;
         return $all[$i];
     }
+    sub dt_boot {
+        return (("." x $i) . (" " x (4 - $i)));
+    }
     my ($beg, $end) = (ip_to_int(shift), ip_to_int(shift));
     for (my $addr = $beg; $addr <= $end; $addr++) {
         my $host = int_to_ip($addr);
         my $ok = check($host);
-        print(("\b" x 8) . (" " x 8) . ("\b" x 8));
+        print(("\b" x 32) . (" " x 32) . ("\b" x 32));
         if ($ok == 0) {
             print "Opened: $host\n";
         }
-        print "Scan...", boot();
+        print boot(), " Scanning", dt_boot(), " $host";
     }
 }
 
@@ -63,7 +66,7 @@ sub main {
         $end = shift;
     }
     scan($beg, $end);
-    print(("\b" x 8) . (" " x 8) . "\n");
+    print(("\b" x 32) . (" " x 32) . "\n");
     return 0;
 }
 
