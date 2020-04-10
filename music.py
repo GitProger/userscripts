@@ -14,17 +14,17 @@ def main(argv: list):
             old = __downloads__ + f
             if "-i" in argv: # ignore
                 continue
-
-            new = __music__ + input(f[:-len(".mp3")] + " to: ") + ".mp3"
-            os.renames(old, new)
-
-            audio = EasyID3("example.mp3")
-            audio['title'] = input("Title: ")
-            audio['artist'] = input("Artist: ")
-            audio['album'] = input("Album: ")
-            audio['composer'] = input("Composer: ")
-            audio.save()
-
+            name = __music__ + input(f[:-len(".mp3")] + " to: ") + ".mp3"
+            os.renames(old, name)            
+            try:
+                audio = EasyID3(name)
+                audio['title'] = input("Title: ")
+                audio['artist'] = input("Artist: ")
+                audio['album'] = input("Album: ")
+                audio['composer'] = input("Composer: ")
+                audio.save()
+            except:
+                print("Not ID3 file")
     return 0
 
 if __name__ == "__main__":
