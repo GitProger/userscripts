@@ -15,17 +15,17 @@ sub set_pers {
  _\ //    
 (_  _OO
   /|| *-<
-', '
+ ', '
     
  _.._
 (---_oO
   //\ *-<
-', '
+ ', '
  
  __.._
 (/_/_Oo
   /|\ *-<
-'
+ '
 );
 
     } elsif ($param eq "bee") {
@@ -35,17 +35,17 @@ sub set_pers {
   _\ //
 <[_  _**
   "/|\ "<
-', '
-   
+ ', '
+
   _...
 <[--- **
   "/|\ "-
-', '
+ ', '
   
   _...
 <[/_/_**
   "/|\ "<
-'
+ '
 );
 
     } elsif ($param eq "bird") {
@@ -74,9 +74,35 @@ sub set_pers {
  '
 );
 
+    } elsif ($param eq "mos") {
+
+@person = ('
+
+     \\\\//
+    __\\\\__
+   [______O----
+     / | \
+    /  |  \
+ ', '
+
+     
+    __\\/__
+   [______O----
+     / | \
+    /  |  \
+ ','
+
+     
+    ______
+   [__//__O----
+     //|\\\\
+    /  |  \
+ '
+);
+
     }
         
-    return scalar(split(/\n/, $person[0]));
+    return scalar(split("\n", $person[0]));
 }
 
 sub loop {
@@ -107,7 +133,7 @@ sub main {
             print
 "\t-h\tthis menu
 \t-c\tcount of loops (default 90)
-\t-p\t[fly|bee|bird] (default fly)
+\t-p\t[fly|bee|bird|mos] (default fly)
 \t-s\ttimeout between loops (in ms) (default 100)
 
 ";
