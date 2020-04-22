@@ -74,7 +74,7 @@ sub set_pers {
  '
 );
 
-    } elsif ($param eq "mos") {
+    } elsif ($param eq "mosquito") {
 
 @person = ('
 
@@ -133,7 +133,7 @@ sub main {
             print
 "\t-h\tthis menu
 \t-c\tcount of loops (default 90)
-\t-p\t[fly|bee|bird|mos] (default fly)
+\t-p\t[fly|bee|bird|mosquito] (default fly)
 \t-s\ttimeout between loops (in ms) (default 100)
 
 ";
