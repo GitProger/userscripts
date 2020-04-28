@@ -2,7 +2,7 @@
 // @name         Putin
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  Putin h**lo!
+// @description  Putin vor!
 // @author       Use this code as you want
 // @match        *
 // @grant        none
