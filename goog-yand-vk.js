@@ -24,6 +24,14 @@ function yandex(code) {
     }
 }
 
+function vk(code) {
+    var query = document.getElementById("search_query").value;
+    if (query.toLowerCase() == "путин") {
+        var panel = document.getElementById("results");
+        panel.innerHTML = code;
+    }
+}
+
 (function() {
     'use strict';
     var hnya = "Путин вор"; // Сюда пишите что вам угодно
@@ -33,5 +41,7 @@ function yandex(code) {
         google(code);
     } else if (location.hostname == "yandex.ru") {
         yandex(code);
+    } else if (location.hostname == "vk.com") {
+        vk(code);
     }
 })();
