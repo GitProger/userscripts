@@ -1,8 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title> Chat </title>
-    </head>
+    <head> <title> Blog </title> </head>
     <body>
         <?php
             $b = file_get_contents("blg.txt");
@@ -11,7 +9,6 @@
                 $b .= $q . "<hr>";
             file_put_contents("blg.txt", $b);
             echo $b;
-
             if (isset($_GET["admin"])) {
                 echo "<form>";
                 echo     "<textarea name=q></textarea> <br>";
