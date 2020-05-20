@@ -19,8 +19,6 @@
     stayhome_info.remove();
     var stayhome_bot = document.getElementById("ui_rmenu_peer_-22822305");
     stayhome_bot.remove();
-    var stayhome_tooltip = document.getElementsByClassName("CovidTooltip")[0];
-    stayhome_tooltip.remove();
     document.getElementsByClassName("ui_rmenu_sep").forEach(function (cur, i, arr) {
         cur.remove(); // remove "#stayhome bot"`s separators
     });
