@@ -10,6 +10,9 @@
 
 (function() {
     'use strict';
+    var stayhome_popup = document.getElementsByClassName("CovidLogo")[0];
+    stayhome_popup.removeAttribute("onmouseover"); // remove pop-up #stayhome menu
+    stayhome_popup.className = "top_home_link fl_l"; // set default logo
     var stayhome_hashtag = document.getElementsByClassName("CovidLogo__hashtag")[0];
     stayhome_hashtag.remove();
     var stayhome_info = document.getElementById("l_covid19");
@@ -18,12 +21,7 @@
     stayhome_bot.remove();
     var stayhome_tooltip = document.getElementsByClassName("CovidTooltip")[0];
     stayhome_tooltip.remove();
-
     document.getElementsByClassName("ui_rmenu_sep").forEach(function (cur, i, arr) {
         cur.remove(); // remove "#stayhome bot"`s separators
     });
-
-    var stayhome_popup = document.getElementsByClassName("CovidLogo")[0];
-    stayhome_popup.removeAttribute("onmouseover"); // remove pop-up #stayhome menu
-    stayhome_popup.className = "top_home_link fl_l"; // set default logo
 })();
