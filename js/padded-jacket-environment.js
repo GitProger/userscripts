@@ -18,8 +18,8 @@ function main() {
     });
 
 
-    var code = `<img src="https://roscongress.org/upload/resize_cache/iblock/a9b/289_289_2/111426.htm.jpg"
- style="z-index: 1000; position: fixed; right: 0px; top: 0px">`;
+    var code = '<img src="https://roscongress.org/upload/resize_cache/iblock/a9b/289_289_2/111426.htm.jpg"'
+             + ' style="z-index: 1000; position: fixed; right: 0px; top: 0px">';
 
     var e = document.getElementById("page_header");
     e.innerHTML += code;
