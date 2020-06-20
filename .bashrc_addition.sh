@@ -12,7 +12,7 @@ cgidir="/usr/lib/cgi-bin"
 wwwdir="/var/www/"
 logdir="/var/log/apache2"
 sitedir="/var/www/site"
-ol="/home/alex/Документы/olimp/valid/"
+ol="/home/alex/Документы/olimp/"
 xbind=.xbindkeysrc
 alias conns="sudo grep psk= /etc/NetworkManager/system-connections/*"
 
