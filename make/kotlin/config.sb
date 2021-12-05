@@ -1,0 +1,10 @@
+{
+    "home": "/home/alex/Документы/regex_cross_project/main/",
+    "mainjar": "/home/alex/Документы/regex_cross_project/main/regex.jar",
+    "src": "src",
+    "base": "test.kt",
+    "modules": [
+        "generator/*.kt",
+        "solver/*.kt"
+    ]
+}
