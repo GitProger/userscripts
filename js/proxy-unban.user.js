@@ -14,14 +14,14 @@
 
 (function() {
     'use strict';
-    var yt_html = `<iframe type="text/html" width="640" height="360" frameborder="0" src="https://www.youtube.com/embed/$VIDID?autoplay=1"></iframe>`;
+    var yt_html = `<iframe type="text/html" width="1280" height="720" frameborder="0" allowfullscreen="1" src="https://www.youtube.com/embed/$VIDID?autoplay=1"></iframe>`;
 
-    var g = document.body.innerHTML.match(/youtube\.com\/watch\?v=(\w+)/);
+    var g = document.body.innerHTML.match(/youtube\.com\/watch\?v=([-\w]+)/);
     var id = "";
     if (g !== null) {
         id = g[1];
     } else {
-        g = document.body.innerHTML.match(/youtu\.be\/(\w+)/);
+        g = document.body.innerHTML.match(/youtu\.be\/([-\w]+)/);
         if (g !== null) id = g[1];
     }
 
