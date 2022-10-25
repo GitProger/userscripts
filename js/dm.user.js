@@ -8,7 +8,7 @@
 // @grant        none
 // @description  Done tasks highlight
 // ==/UserScript==
-
+ 
 function putList(done) { localStorage.setItem("done", JSON.stringify(done)); }
 function getList() { return JSON.parse(localStorage.getItem("done")); }
 function add(id) {
