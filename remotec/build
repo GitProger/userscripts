@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+javac -cp . $1.java
+jar cmvf META-INF/MANIFEST.MF $1.jar *.class
+#java -jar Main.jar
+
