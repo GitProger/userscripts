@@ -50,7 +50,8 @@ function enru(s) {
 
 (function() {
     'use strict';
-    window.addEventListener('load', () => {
+//    'window' here breaks github? (CtrlA + CtrlV in the editor doesnt work for example)
+//    document.addEventListener('load', e => {
         document.body.innerHTML += '<div id="script-translate-element-239566" style="position: fixed; background: #ddd; color: #000; padding: 1px 8px; border: 1px solid black; display: none;"></div>';
         var tr = document.getElementById("script-translate-element-239566");
 
@@ -60,7 +61,6 @@ function enru(s) {
             clientY = e.pageY;
         }, false);
 
-        //document.onkeyup =
         document.addEventListener('keyup', e => {
             if (e.ctrlKey && e.key == ';') {
                 var t = window.getSelection().toString();
@@ -73,5 +73,5 @@ function enru(s) {
                 tr.style.display = "none";
             }
         }, false);
-    }, false);
+//    }, false);
 })();
