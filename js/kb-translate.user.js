@@ -50,10 +50,12 @@ function enru(s) {
 
 (function() {
     'use strict';
+//    adding new element breaks vk
 //    'window' here breaks github? (CtrlA + CtrlV in the editor doesnt work for example)
 //    document.addEventListener('load', e => {
-        document.body.innerHTML += '<div id="script-translate-element-239566" style="position: fixed; background: #ddd; color: #000; padding: 1px 8px; border: 1px solid black; display: none;"></div>';
-        var tr = document.getElementById("script-translate-element-239566");
+        var tr = document.createElement("div");
+        tr.style = "z-index: 999; position: fixed; background: #ddd; color: #000; padding: 1px 8px; border: 1px solid black; display: none;";
+        document.body.append(tr);
 
         var clientX = 0, clientY = 0;
         document.addEventListener('mousemove', e => {
@@ -68,7 +70,8 @@ function enru(s) {
                 tr.style.top = clientY + "px";
                 console.log(e);
                 tr.style.display = "inline-block";
-                tr.innerHTML = enru(t);
+                tr.innerHTML = '';
+                tr.appendChild(document.createTextNode(enru(t)));
             } else if (e.key == "Escape") {
                 tr.style.display = "none";
             }
