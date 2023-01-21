@@ -1,0 +1,42 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+sub alert {
+    my ($type, $title, $content) = @_;
+    system("notify-send -u $type -c \"$title\" \"$content\"");
+}
+
+my $HOUR = 3600;
+my $GAP = 5 * 60;
+
+my @games = (
+    {
+        "name"      => "dota2",
+        "proc_name" => "dota2",
+        "limit"     => 2 * $HOUR
+    },
+    # {
+    #     "name"      => "chrome",
+    #     "proc_name" => "chrome",
+    #     "limit"     => 0
+    # }
+);
+
+my %status = ();
+
+for (;;) {
+    for my $game (@games) {
+        my $nm = $game->{"name"};
+        my $pn = $game->{"proc_name"};
+        if (`pidof $pn` ne "") {
+            $status{$nm} += $GAP;
+        }
+        if (($status{$nm} // 0) > $game->{"limit"}) {
+            alert("critical", "Limit exceeded", "Daily limit of $nm exceeded.");
+        }
+    }
+    my $day = `date +%d`;
+    sleep $GAP;
+    %status = () if (`date +%d` ne $day);
+}
