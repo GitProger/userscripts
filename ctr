@@ -10,30 +10,33 @@ sub alert {
 my $HOUR = 3600;
 my $GAP = 5 * 60;
 
-my @games = (
-    {
-        "name"      => "dota2",
+my %games = (
+    "dota2" => {
         "proc_name" => "dota2",
-        "limit"     => 2 * $HOUR
+        "limit"     => 2 * $HOUR,
+        "union"     => []
     },
-    # {
-    #     "name"      => "chrome",
-    #     "proc_name" => "chrome",
-    #     "limit"     => 0
-    # }
 );
 
 my %status = ();
 
 for (;;) {
-    for my $game (@games) {
-        my $nm = $game->{"name"};
+    for my $name (keys %games) {
+        my $game = $games{$name};
+        my $pn = $game->{"proc_name"};
+        $status{$name} += $GAP if (`pidof $pn` ne "");
+    }
+    for my $name (keys %games) {
+        my $game = $games{$name};
         my $pn = $game->{"proc_name"};
         if (`pidof $pn` ne "") {
-            $status{$nm} += $GAP;
-        }
-        if (($status{$nm} // 0) > $game->{"limit"}) {
-            alert("critical", "Limit exceeded", "Daily limit of $nm exceeded.");
+            if (sub {
+                    my $s = 0;
+                    for my $k (@_) { $s += $k; }
+                    return $s;
+                }->(map { ($status{$_} // 0) } @{$game->{"union"}}) + $status{$name} > $game->{"limit"}) {
+                alert("critical", "Limit exceeded", "Daily limit of $name exceeded.");
+            }
         }
     }
     my $day = `date +%d`;
