@@ -35,8 +35,8 @@ $control distortp (_ "Distort reflected sound?") choice ("Yes" "No")
   (if (> c 1)
     (apply #'vector
            (mapcar (lambda (_) (cue mono)) 
-                   (range 0 c))))
-    (cue mono))
+                   (range 0 c)))
+    (cue mono)))
 
 ; old versions: (sum 1 (scale -1 (ramp))); (sine 15 1.0); sin(x)/8 + 1/2
 (defun distort (sig)
