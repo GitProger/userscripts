@@ -1,6 +1,3 @@
-#######################################################
-# my functions and aliases
-#############################
 cgidir="/usr/lib/cgi-bin"
 wwwdir="/var/www/"
 logdir="/var/log/apache2"
@@ -38,7 +35,7 @@ alias KILL="sudo kill -9"
 alias gitdef="git add . && git commit -m upd && git push"
 alias boop="play -q -V0 -n synth trim 0 0.1 vol 1" # sox
 alias notif="notify-send -u critical -c " # notif $theme $text
-
+alias g=git
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -59,15 +56,39 @@ alias hs=ghc
 alias hsi=ghci
 alias oc="rlwrap ocaml"
 
-alias cf=/home/alex/go/src/github.com/xalanq/cf-tool/cf
+alias cf=/home/alex/go/src/github.com/xalanq/cf-tool/cf-tool
 export GOPATH=/home/alex/go
+alias goi="rlwrap /home/alex/go/bin/yaegi"
+
+alias golint="$GOPATH/bin/golangci-lint"
+
+function lookup {
+   grep -Rnw $1 -e $2
+}
+
+alias temp=sensors
+
+#alias protoc=$GOPATH/bin/protoc-gen-go
+#alias fly=/home/alex/.fly/bin/fly
+
+function twu {
+  twitch api get users -q login=$1
+}
 
 alias java8=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+alias java11=/usr/lib/jvm/java-11-openjdk-amd64/bin/java
+alias java17=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
+alias java21=/usr/bin/java
 
-alias vcpkg=~/vcpkg/vcpkg
+#alias vcpkg=/opt/vcpkg/vcpkg
 
-alias dotheyreallyknowcpp="cat \`find | grep -E '\.(cpp|h|c)'\` | grep -E '(typename|delete|new|_ptr)'"
+alias dotheyreallyknowcpp="cat \`find | grep -E '\.(cpp|h|c)'\` | grep -E '(typename|delete|new |_ptr)'"
 #cat $(find | grep -E '\.(cpp|h|c)') | grep -E '(typename|delete|new|_ptr)'
+
+alias viu=/home/alex/.cargo/bin/viu
+
+
+alias tcp129="sudo bash -c 'echo 129 > /proc/sys/net/ipv4/ip_default_ttl'"
 
 
 function red { echo -e "\033[31;1m$@\033[0;m" ; }
@@ -126,6 +147,10 @@ function sha1   { echo -n $1 | sha1sum; }
 function sha256 { echo -n $1 | sha256sum; }
 function sha512 { echo -n $1 | sha512sum; }
 
+function swap() {
+    local tempfile=tmp.$$.$RANDOM
+    mv "$1" $tempfile && mv "$2" "$1" && mv $tempfile "$2"
+}
 
 function wthr {
     curl http://wttr.in/$1
@@ -158,3 +183,27 @@ function out {
         cat "$@"
     fi
 }
+
+function clear_history_used {
+  echo > ~/.local/share/recently-used.xbel
+}
+
+#arp ip nmap lsof netstat ss
+
+###################################################################################
+
+
+PATH="/home/alex/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/alex/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/alex/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/alex/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/alex/perl5"; export PERL_MM_OPT;
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias godoc=/home/alex/go/bin/godoc
+
+[ -f "/home/alex/.ghcup/env" ] && . "/home/alex/.ghcup/env" # ghcup-env
